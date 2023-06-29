@@ -14,7 +14,7 @@ import os
 import argparse
 
 # ------------------------------Supporting .py Files------------------------------
-from data import mimicforsetlstm
+from data import MIMICdata
 from LSTMCell_MIMIC import LSTMCell
 from utils import EarlyStopping_AUPRC, seed_everything
 
@@ -156,7 +156,7 @@ if __name__ == '__main__':
     else:
         device = torch.device('cpu')
     print("device: ", device)
-    trainset = mimicforsetlstm(datadir = datadir,
+    trainset = MIMICdata(datadir = datadir,
                             configdir = configdir,
                                 name = 'train', 
                                 device = device,
@@ -169,7 +169,7 @@ if __name__ == '__main__':
                                 top = top,
                                 stat_file = stat_file,
                                 sr_file = sr_file)
-    valset = mimicforsetlstm(datadir = datadir, 
+    valset = MIMICdata(datadir = datadir, 
                             configdir = configdir,
                                 name = 'val', 
                                 device = device,
@@ -182,7 +182,7 @@ if __name__ == '__main__':
                                 top = top,
                                 stat_file = stat_file,
                                 sr_file = sr_file) 
-    testset = mimicforsetlstm(datadir = datadir, 
+    testset = MIMICdata(datadir = datadir, 
                             configdir = configdir,
                                 name = 'test', 
                                 device = device,
