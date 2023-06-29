@@ -1,5 +1,3 @@
-# To run this type - 
-
 # ------------------------------Libraries------------------------------
 import torch
 import torch.nn as nn
