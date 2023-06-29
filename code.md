@@ -115,3 +115,13 @@
     --if_relu, --no-if_relu
                         Apply relu layer to the concat of ht and ct before final prediction. Default False (default: False)
     --agg_by AGG_BY       aggregate function to use for summary state. Aggregate options are "mean", "max", "attention". Default "mean"
+
+# To Check Result
+1. Running the Code: `python Code/read_results.py`
+2. usage: read_results.py [-h] [--expno EXPNO] [--data_name DATA_NAME]
+3. optional arguments:
+    - -h, --help            show this help message and exit
+    - --expno EXPNO         The experiment number. Default "test"
+    - --data_name DATA_NAME
+                        The data name. Choose from these options: "MIMIC", "P12", "P19". Default
+                        MIMIC
