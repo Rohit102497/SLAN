@@ -63,9 +63,10 @@
     - --abl50, --no-abl50   Ablation study with only 50 percent data. Default False (default: False)
     - --abl75, --no-abl75   Ablation study with only 75 percent data. Default False (default: False)
 
-# P12 Code
-1. Running the Code: `python code/main_P12.py`
-2. usage: main_P12.py [-h] [--expno EXPNO] [--seed SEED] [--hidsz HIDSZ] [--lr LR] [--bs BS] 
+# P12 or P19 Code
+1. Running the P12 Code: `python code/main_P12.py`
+2. Running the P19 Code: `python code/main_P19.py`
+3. usage: main_P12.py [-h] [--expno EXPNO] [--seed SEED] [--hidsz HIDSZ] [--lr LR] [--bs BS] 
                    [--epochs EPOCHS]
                    [--load_all | --no-load_all] [--ninst NINST] [--cuda | --no-cuda] [--gpu_no GPU_NO] [--if_es | --no-if_es]
                    [--patience_es PATIENCE_ES] [--delta_es DELTA_ES] [--if_scheduler | --no-if_scheduler]
@@ -73,7 +74,7 @@
                    [--if_static | --no-if_static] [--norm | --no-norm] [--standard | --no-standard] [--f_decay | --no-f_decay]
                    [--f_only_ct | --no-f_only_ct] [--f_no_ct | --no-f_no_ct] [--if_sr | --no-if_sr] [--if_relu | --no-if_relu]
                    [--agg_by AGG_BY]
-3. optional arguments:
+4. optional arguments:
     -h, --help            show this help message and exit
     --expno EXPNO         The experiment number. Default "test"
     --seed SEED           The seed value. Default 2020
