@@ -149,7 +149,7 @@ if __name__ == '__main__':
                                 normalize_data = normalize_data,
                                 standardize_data = standardize_data,
                                 padding = padding, 
-                                load_all = False,
+                                load_all = True,
                                 to_predict = to_predict) 
     testset = P19data(config_dir = configdir,
                                 name = 'test', 
@@ -158,7 +158,7 @@ if __name__ == '__main__':
                                 normalize_data = normalize_data,
                                 standardize_data = standardize_data,
                                 padding = padding, 
-                                load_all = False,
+                                load_all = True,
                                 to_predict = to_predict) 
 
     trainloader = DataLoader(trainset, batch_size = batch_size, shuffle = True)
