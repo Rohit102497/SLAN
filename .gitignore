@@ -1,0 +1,5 @@
+SLAN_env/
+Data/
+Code/__pycache__/
+Results/MIMIC/MIMIC_IHM_Exptest_auprcmodel.pth
+Results/MIMIC/MIMIC_IHM_Exptest.data
