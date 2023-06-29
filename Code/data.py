@@ -4,12 +4,9 @@ import pandas as pd
 import numpy as np
 import json
 import collections
-# import random
-# from tqdm import tqdm
 import pickle
 import torch
 from torch.utils.data import Dataset
-# from torch.utils.data import DataLoader, IterableDataset, Sampler
 import os
 __file__ = os.path.abspath('')
 
@@ -103,7 +100,6 @@ class mimicforsetlstm(Dataset):
             else:
                 patient_df = patient_df.iloc[:,[0] +self.bottom_idx]
 
-        #print(patient_df)#.columns[1:])
         info = filename.split('_')
         patient_id = float(info[0] + '.' +  info[1].split('episode')[-1])
         feature_dict = {fname:idx for idx, fname in enumerate(patient_df.columns[1:])}
@@ -137,7 +133,6 @@ class mimicforsetlstm(Dataset):
                     vdict = self.possible_values[af]['values']
                     
                     if str(av) not in vdict:
-                        #print('==>',af, av, vdict)
                         av = str(av).split('.')[0]
                         z_global.append(vdict[str(av)])
                     else:
@@ -206,15 +201,6 @@ class P12data(Dataset):
         
         with open(self.config_dir + 'p12_stat.pickle', 'rb') as fp:
             self.loaded_stat = pickle.load(fp) 
-            
-        #print(self.loaded_stat)
-
-        '''if self.name == 'train':
-            self.sample_idx = self.split_indices[0]
-        elif self.name == 'val':
-            self.sample_idx = self.split_indices[1]
-        else: # 'test'
-            self.sample_idx = self.split_indices[2]'''
         
         self.labels = [d['target'] for d in self.data]
         
@@ -227,7 +213,7 @@ class P12data(Dataset):
         self.MAX_LEN = 1400
         self.do_padding = padding
 
-        with open('./sampling_rate_p12.npy', 'rb') as f:
+        with open(__file__ + '/Data/P12/sampling_rate_p12.npy', 'rb') as f:
             self.sampling_rate = np.load(f)
         
         
@@ -242,7 +228,6 @@ class P12data(Dataset):
         arr = self.data[idx]
         nfeatures = arr['diagnosis'].shape[1]
         y = self.labels[idx]
-        #print("y=",y)
         curr_len = arr['length']
         t = arr['timestamps'].reshape(-1)
         #pid = int(arr['id'])
@@ -254,10 +239,9 @@ class P12data(Dataset):
         delt_global = []
         
         lasttime_feat = {idx:[] for idx in range(37)}
-        #print(arr['diagnosis'].shape, t.shape)
+
         for ii, (row ,mask, tmp) in enumerate(zip(arr['diagnosis'],arr['masks'], t)):
             # iterating each row
-            #print(row.shape, mask.shape, tmp)
             if ii < curr_len:
                 
                 nonzero_idx = [i for i,r in enumerate(mask) if r]
@@ -267,9 +251,7 @@ class P12data(Dataset):
                     type_global.append(nidx)
                     av = row[nidx]
                     if self.normalize_data:
-                        #print('yes')
                         mn,mx = self.loaded_stat[f'idx{nidx}']['min'],self.loaded_stat[f'idx{nidx}']['max']
-                        #mean,std = self.loaded_stat[f'idx{nidx}']['mean'],self.loaded_stat[f'idx{nidx}']['std']
                         if mn != mx:
                             normalized_av =  (av - mn) / (mx-mn)
                         else:
@@ -290,9 +272,6 @@ class P12data(Dataset):
                     else:
                         lasttime_feat[nidx].append(tmp)
                         delt_global.append(tmp-lasttime_feat[nidx][-2])
-                    #print(nidx,'==>' ,tmp, delt_global[-1])
-                        
-            #print(lasttime_feat)
                     
         curr_len = len(z_global)
         if self.do_padding:
@@ -346,7 +325,6 @@ class P19data(Dataset):
             self.labels = self.labels[:num_of_instances]
         
         print(f"{self.name} loaded , num of instances:", len(self.data))#, self.sample_idx)
-        #print(f'{self.name} distribution:', collections.Counter(self.labels))
         self.MAX_LEN = 4300
         self.MAX_timesteps = 350
         self.do_padding = padding
@@ -372,8 +350,6 @@ class P19data(Dataset):
         y_modified = []
         curr_len = arr['length']
         t = arr['timestamps'].reshape(-1)
-        # print("row_wise_mask_sum:", np.sum(self.data[idx]['masks'], axis = 1))
-        #pid = int(arr['id'])
         static = arr['static']
         
         time_global = []
@@ -382,10 +358,8 @@ class P19data(Dataset):
         delt_global = []
         
         lasttime_feat = {idx:[] for idx in range(self.num_features)}
-        #print(arr['diagnosis'].shape, t.shape)
         for ii, (row ,mask, tmp) in enumerate(zip(arr['diagnosis'],arr['masks'], t)):
             # iterating each row
-            #print(row.shape, mask.shape, tmp)
             if ii < curr_len:
                 
                 nonzero_idx = [i for i,r in enumerate(mask) if r]
@@ -402,7 +376,6 @@ class P19data(Dataset):
                             normalized_av =  (av - mn) / (mx-mn)
                         else:
                             normalized_av = av
-                        #print(av,"== normalized ==>", normalized_av)
                         z_global.append(normalized_av)
                     elif self.standardize_data:
                         mean,std = self.loaded_stat[f'idx{nidx}']['mean'],self.loaded_stat[f'idx{nidx}']['std']
@@ -420,9 +393,7 @@ class P19data(Dataset):
                     else:
                         lasttime_feat[nidx].append(tmp)
                         delt_global.append(tmp-lasttime_feat[nidx][-2])
-                    #print(nidx,'==>' ,tmp, delt_global[-1])
-
-
+                    
         y = y_modified
         current_y_len = len(y)
         if self.do_padding:
@@ -432,7 +403,6 @@ class P19data(Dataset):
             else:
                 y = y[:self.MAX_timesteps]
 
-        # print("time_gloabl:", time_global)            
         curr_len = len(z_global)
         if self.do_padding:
             diff = self.MAX_LEN - curr_len
