@@ -20,45 +20,45 @@
     - --seed SEED           The see value. Default 2020
     - --hidsz HIDSZ         The hidden size of LSTM. Default 32
     - --lr LR               The learning rate. Default 0.0005
-  --bs BS               The batch size. Default 32
-  --epochs EPOCHS       Number of epochs. Default 1
-  --load_all, --no-load_all
-                        Load all the training data. Default True (default: True)
-  --ninst NINST         The number of training instance to load. Default 32
-  --cuda, --no-cuda     True if using gpu. Default False (default: False)
-  --gpu_no GPU_NO       The number of gpu to use. Default 0
-  --if_es, --no-if_es   Use early stopping. Default True (default: True)
-  --patience_es PATIENCE_ES
-                        Patience of early stopping. Default 5
-  --delta_es DELTA_ES   Delta of early stopping. Default 0.0
-  --if_scheduler, --no-if_scheduler
+    - --bs BS               The batch size. Default 32
+    - --epochs EPOCHS       Number of epochs. Default 1
+    - --load_all, --no-load_all
+                            Load all the training data. Default True (default: True)
+    - --ninst NINST         The number of training instance to load. Default 32
+    - --cuda, --no-cuda     True if using gpu. Default False (default: False)
+    - --gpu_no GPU_NO       The number of gpu to use. Default 0
+    - --if_es, --no-if_es   Use early stopping. Default True (default: True)
+    - --patience_es PATIENCE_ES
+                            Patience of early stopping. Default 5
+    - --delta_es DELTA_ES   Delta of early stopping. Default 0.0
+    - --if_scheduler, --no-if_scheduler
                         learning rate scheduler is applied. Default True (default: True)
-  --scheduler SCHEDULER
+    - --scheduler SCHEDULER
                         Threshold for early stopping. Default 0.5
-  --if_dropout, --no-if_dropout
+    - --if_dropout, --no-if_dropout
                         Dropout hidden nodes. Default True (default: True)
-  --dropout DROPOUT     Dropout value. Default 0.3
-  --if_decay, --no-if_decay
+    - --dropout DROPOUT     Dropout value. Default 0.3
+    - --if_decay, --no-if_decay
                         Decay the hidden states. Default True (default: True)
-  --norm, --no-norm     Normalize the data. Default False (default: False)
-  --standard, --no-standard
+    - --norm, --no-norm     Normalize the data. Default False (default: False)
+    - --standard, --no-standard
                         Standardize the data. Default True (default: True)
-  --f_decay, --no-f_decay
+    - --f_decay, --no-f_decay
                         Decay he final hidden state of each feature. Default True (default: True)
-  --f_only_ct, --no-f_only_ct
+    - --f_only_ct, --no-f_only_ct
                         Use only summary state for final prediction. Default False (default: False)
-  --f_no_ct, --no-f_no_ct
+    - --f_no_ct, --no-f_no_ct
                         Use only hidden states for final prediction. Default False (default: False)
-  --if_sr, --no-if_sr   Use smapling rate for decay. Default True (default: True)
-  --if_relu, --no-if_relu
+    - --if_sr, --no-if_sr   Use smapling rate for decay. Default True (default: True)
+    - --if_relu, --no-if_relu
                         Apply relu layer to the concat of ht and ct before final prediction. Default False (default: False)
-  --agg_by AGG_BY       aggregate function to use for summary state. Aggregate options are - "mean", "max", "attention".
+    - --agg_by AGG_BY       aggregate function to use for summary state. Aggregate options are - "mean", "max", "attention".
                         Default "mean"
-  --subsample, --no-subsample
+    - --subsample, --no-subsample
                         A subset of features are used for training. Default False (default: False)
-  --top, --no-top       If subsample is true, then top = True implies top 6 high sampling rate feature is used for all the
+    - --top, --no-top       If subsample is true, then top = True implies top 6 high sampling rate feature is used for all the
                         model training and testing otherwise bottom 6 high sampling rate feature is used. Default True
                         (default: True)
-  --abl25, --no-abl25   Ablation study with only 25 percent data. Default False (default: False)
-  --abl50, --no-abl50   Ablation study with only 50 percent data. Default False (default: False)
-  --abl75, --no-abl75   Ablation study with only 75 percent data. Default False (default: False)
+    - --abl25, --no-abl25   Ablation study with only 25 percent data. Default False (default: False)
+    - --abl50, --no-abl50   Ablation study with only 50 percent data. Default False (default: False)
+    - --abl75, --no-abl75   Ablation study with only 75 percent data. Default False (default: False)
