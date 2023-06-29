@@ -1,5 +1,11 @@
 SLAN_env/
-Data/
+Data/MIMIC/
+Data/MIMIC.zip
+Data/P12/
+Data/P12.zip
+Data/P19/
+Data/P19.zip
+Data/.DS_Store
 Code/__pycache__/
 Results/MIMIC/MIMIC_IHM_Exptest_auprcmodel.pth
 Results/MIMIC/MIMIC_IHM_Exptest.data
