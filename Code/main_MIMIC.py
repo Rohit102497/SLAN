@@ -126,7 +126,6 @@ if __name__ == '__main__':
     top = args.top # If subsample is true, then top = True implies top 6 high sampling rate feature is used
     # for all the model training and testing otherwise bottom 6 high sampling rate feature is used
 
-    print(batch_size, epochs, load_all, num_of_instances, cuda)
     # ------------------------------Result Address------------------------------
     path_to_result = __file__ + '/Results/MIMIC/'
     result_addr = path_to_result + data_name + "_Exp"  +  experiment_no + ".data"
@@ -137,13 +136,11 @@ if __name__ == '__main__':
     # ------------------------------Parameters to save------------------------------
     train_epoch_loss = []
     train_epoch_acc = []
-    train_epoch_f1 = []
     train_epoch_auprc = []
     train_epoch_auroc = []
 
     val_epoch_loss = []
     val_epoch_acc = []
-    val_epoch_f1 = []
     val_epoch_auprc = []
     val_epoch_auroc_macro = []
 
@@ -177,7 +174,7 @@ if __name__ == '__main__':
                                 normalize_data = normalize_data,
                                 standardize_data = standardize_data,
                                 padding = padding, 
-                                load_all = False,
+                                load_all = True,
                                 subsample = subsample,
                                 top = top,
                                 stat_file = stat_file,
@@ -190,7 +187,7 @@ if __name__ == '__main__':
                                 normalize_data = normalize_data, 
                                 standardize_data = standardize_data,
                                 padding = padding, 
-                                load_all = False,
+                                load_all = True,
                                 subsample = subsample,
                                 top = top,
                                 stat_file = stat_file,
