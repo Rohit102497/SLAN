@@ -1,0 +1,5 @@
+- This holds all the trained models and results of MIMIC dataset.
+- Trained Model name type: MIMIC_IHM_Exp$Experiment No$_auprcmodel.pth
+    - $Experiment No$ can be "test", "1", "2" and so on
+- Result saved name type: MIMIC_IHM_Exp$Experiment No$.data
+    - $Experiment No$ can be "test", "1", "2" and so on
