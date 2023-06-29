@@ -15,11 +15,11 @@
                     [--top | --no-top] [--abl25 | --no-abl25] 
                     [--abl50 | --no-abl50] [--abl75 | --no-abl75]
 3. optional arguments:
-  -h, --help            show this help message and exit
-  --expno EXPNO         The experiment number. Default "test"
-  --seed SEED           The see value. Default 2020
-  --hidsz HIDSZ         The hidden size of LSTM. Default 32
-  --lr LR               The learning rate. Default 0.0005
+    - -h, --help            show this help message and exit
+    - --expno EXPNO         The experiment number. Default "test"
+    - --seed SEED           The see value. Default 2020
+    - --hidsz HIDSZ         The hidden size of LSTM. Default 32
+    - --lr LR               The learning rate. Default 0.0005
   --bs BS               The batch size. Default 32
   --epochs EPOCHS       Number of epochs. Default 1
   --load_all, --no-load_all
