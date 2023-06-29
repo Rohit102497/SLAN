@@ -146,7 +146,7 @@ if __name__ == '__main__':
                                 normalize_data = normalize_data,
                                 standardize_data = standardize_data,
                                 padding = padding, 
-                                load_all = False,
+                                load_all = True,
                                 to_predict = to_predict) 
     testset = P12data(config_dir = configdir,
                                 name = 'test', 
@@ -155,7 +155,7 @@ if __name__ == '__main__':
                                 normalize_data = normalize_data,
                                 standardize_data = standardize_data,
                                 padding = padding, 
-                                load_all = False,
+                                load_all = True,
                                 to_predict = to_predict) 
 
     # ------------------------------Prepare weighted sampler------------------------------
@@ -302,7 +302,7 @@ if __name__ == '__main__':
         "epoch_time" : epoch_time
     }
 
-        # ------------------------------Load model for testing------------------------------
+    # ------------------------------Load model for testing------------------------------
     best_model_auprc = LSTMCell(hidden_size, number_features, n_class, device, sr = trainset.sampling_rate, use_sr = use_sr,
                 final_decay = final_decay, final_only_ct = final_only_ct, if_relu_at_end = if_relu_at_end, 
                 if_dropout = if_dropout, dropout = dropout, if_static = if_static, dataset = dataset, aggregate_by=aggregate_by)
