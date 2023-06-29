@@ -329,13 +329,9 @@ class P19data(Dataset):
         self.MAX_timesteps = 350
         self.do_padding = padding
 
-        with open('./sampling_rate_p19.npy', 'rb') as f:
+        with open(__file__ + '/Data/P19/sampling_rate_p19.npy', 'rb') as f:
             self.sampling_rate = np.load(f)
 
-
-        # self.no_of_instances = len(self.data)
-        
-        
     def __len__(self):
         return len(self.data)
     
