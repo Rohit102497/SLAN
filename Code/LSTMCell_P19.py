@@ -107,8 +107,6 @@ class LSTMCell(nn.Module):
         # t - t denotes the time value and it is sorted
         prediction = []
         for i in range(X.shape[0]):
-            instance_prediction = []
-
             t = X[i, 0, :lengths[i]]
             m = X[i, 1, :lengths[i]].long()
             x = X[i, 2, :lengths[i]]
@@ -119,7 +117,6 @@ class LSTMCell(nn.Module):
             self.c_t = torch.zeros(self.hidden_size, dtype=torch.float).to(t.device)
 
             # Grouing the features received at each time instance
-            # time_group = pd.Series(range(len(t))).groupby(t, sort=False).apply(list).tolist()
             _, counts = torch.unique_consecutive(t, return_counts = True)
             it = 0
             last_time = [0]*self.number_features
@@ -174,7 +171,5 @@ class LSTMCell(nn.Module):
             
             
                 prediction.append(pred)
-
-            # prediction.append(instance_prediction)
 
         return torch.stack(prediction)

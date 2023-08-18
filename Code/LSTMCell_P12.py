@@ -82,12 +82,6 @@ class LSTMCell(nn.Module):
                                     nn.Linear(self.hidden_size, self.n_class)
                                     ).to(self.device)
 
-        # if self.final_only_ct:
-        #     in_for_out_dim = self.hidden_size
-        # else:
-        #     in_for_out_dim = self.number_features*self.hidden_size + self.hidden_size
-        # self.output_layers = nn.Linear(in_for_out_dim, self.n_class).to(self.device)
-
     # Aggregate function on list of tensors
     def agg_func(self, list_tensor, fn = "mean"):
         if fn == "mean":
@@ -124,7 +118,6 @@ class LSTMCell(nn.Module):
             self.c_t = torch.zeros(self.hidden_size, dtype=torch.float).to(t.device)
 
             # Grouing the features received at each time instance
-            # time_group = pd.Series(range(len(t))).groupby(t, sort=False).apply(list).tolist()
             _, counts = torch.unique_consecutive(t, return_counts = True)
             it = 0
             for t_i in counts: # time_group:
@@ -134,10 +127,6 @@ class LSTMCell(nn.Module):
                     h_t_decayed = self.decay_func(m[j], delt[j:j+1], t.device)
                     if self.if_dropout and training:
                         h_t_decayed = self.dropout(h_t_decayed)
-                    # tensor_zero = torch.tensor(0.).to(t.device)
-                    # decay_module_val = self.decay_per_features[m[j]](delt[j:j+1]*self.sr[m[j]])
-                    # decay = torch.exp(-1*torch.max(tensor_zero, decay_module_val))
-                    # h_t_decayed = decay*self.h_t[m[j],:].clone()
                     inp_i = torch.cat((x[j:j+1], h_t_decayed)).float()
                     out_i = self.layers_per_features[m[j]](inp_i)
                     gate_input, gate_forget, gate_output, gate_pre_c, = out_i.chunk(4)
@@ -158,12 +147,8 @@ class LSTMCell(nn.Module):
                 for feat_i in range(self.number_features):
                     if (m == feat_i).nonzero().numel() != 0:
                         delt_final = (torch.max(t) - t[(m == feat_i).nonzero()[-1].item()]).reshape(1).float()
-                        # decay = torch.exp(-1*torch.max(torch.tensor(0.).to(t.device),
-                        #         self.decay_per_features[feat_i](delt_final*self.sr[m[feat_i]])))
-                        # h_t_decayed = decay*self.h_t[feat_i,:].clone()
                         h_t_decayed = self.decay_func(feat_i, delt_final, t.device)
                         self.h_t[feat_i,:] = h_t_decayed
-                # Decay final h_t for output prediction
  
             if not self.static_feat:
                 pred = torch.softmax(
