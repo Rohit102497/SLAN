@@ -68,11 +68,11 @@ if __name__ == '__main__':
     seed = args.seed # Seeding parametes
     hidden_size = args.hidsz # The hidden size of all the LSTM used in the models
     lr = args.lr # Learning rate
-    batch_size = args.bs
-    epochs = args.epochs
+    batch_size = args.bs # Batch Size
+    epochs = args.epochs # Number of epochs
 
     load_all = args.load_all # True, if all the training data is to be used.
-    num_of_instances = args.ninst # Number of instances to train the model
+    num_of_instances = args.ninst # Number of instances to train the model. It load_all is True, then this variable will be ignored
     stat_file = __file__ + '/Data/MIMIC/mimic_stat.json'  # The location of the file containing statistics of training data
     sr_file = __file__ + '/Data/MIMIC/sampling_rate_mimic.npy' # It contains sampling rate value of each feature based on the training data
     
@@ -327,13 +327,11 @@ if __name__ == '__main__':
 
         "Train_Loss" :  train_epoch_loss,
         "Train_Acc" :   train_epoch_acc,
-        "Train_F1" :    train_epoch_f1,
         "Train_AUROC" : train_epoch_auroc,
         "Train_AUPRC" : train_epoch_auprc,
         
         "Val_Loss" :    val_epoch_loss,
         "Val_Acc" :     val_epoch_acc,
-        "Val_F1" :      val_epoch_f1,
         "Val_AUROC_Macro" :   val_epoch_auroc_macro,
         "Val_AUPRC" :   val_epoch_auprc,
 
