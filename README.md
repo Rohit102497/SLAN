@@ -5,7 +5,7 @@ Switch LSTM Aggregate Network (SLAN) to model Irregulary Sampled Time Series (IS
 
 ## Raw Data
 
-MIMIC: We don't provide the original data for MIMIC-III in this repo as it violates the Data Usage Agreement. You can get access to MIMIC dataset following the instructions (Adapated from [here]((https://github.com/kaggarwal/ClinicalNotesICU#steps))):
+MIMIC: We don't provide the original data for MIMIC-III in this repo as it violates the Data Usage Agreement. You can get access to MIMIC dataset following the instructions (Adapated from [here](https://github.com/kaggarwal/ClinicalNotesICU#steps)):
 
 - Clone https://github.com/kaggarwal/ClinicalNotesICU . 
 - Clone https://github.com/YerevaNN/mimic3-benchmarks and run all data generation steps to generate training data without text features.
