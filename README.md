@@ -1,8 +1,17 @@
 # SLAN
 Switch LSTM Aggregate Network (SLAN) to model Irregulary Sampled Time Series (ISTS)
 
-# Data Required
-1. Download MIMIC data and store it in the `Data` Folder. Link to download MIMIC data - https://figshare.com/s/22b79cc75d7374642d0a
+# Datasets 
+
+## Raw Data
+
+## Data Preprocessing
+
+## Processed Data
+Required
+1. We don't have the permission to share the MIMIC data. So, you have to download the MIMIC data from the official link given in the Raw Data section. 
+We have shared a folder where you need to store some 
+Download MIMIC data and store it in the `Data` Folder. Link to download MIMIC data - https://figshare.com/s/22b79cc75d7374642d0a
 2. Download P12 data and store it in the `Data` Folder. Link to download P12 data - https://figshare.com/s/cb14d27aa3c86e97d4f1
 3. Download P19 data and store it in the `Data` Folder. Link to download P19 data - https://figshare.com/s/a56fdf085943234a12e1
 
