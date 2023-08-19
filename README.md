@@ -5,7 +5,17 @@ Switch LSTM Aggregate Network (SLAN) to model Irregulary Sampled Time Series (IS
 
 ## Raw Data
 
+MIMIC: We don't provide the original data for MIMIC-III in this repo as it violates the Data Usage Agreement. You can get access to MIMIC dataset following the instruction provided [here](https://github.com/kaggarwal/ClinicalNotesICU#steps) .
+
+P12 and P19 : You can get access to raw P12/P19 data via https://physionet.org/content/challenge-2012/1.0.0/ and https://physionet.org/content/challenge-2019/1.0.0/ . Alternatively, you can use `medical_ts_datasets` from (SeFT github repository)[https://github.com/BorgwardtLab/Set_Functions_for_Time_Series/tree/master#available-datasets].
+
+
 ## Data Preprocessing
+
+MIMIC : Follow the notebook `notebooks/getting_mimic_stats.ipynb` to generate the stat files.
+
+P12 and P19:  Follow the notebooks `notebooks/getting_p12.ipynb` and `notebooks/getting_p12.ipynb` for preprocessing and generating stat files.
+
 
 ## Processed Data
 Required
