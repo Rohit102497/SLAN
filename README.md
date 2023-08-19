@@ -6,18 +6,18 @@ Switch LSTM Aggregate Network (SLAN) to model Irregulary Sampled Time Series (IS
 ## Raw Data
 
 MIMIC: We don't provide the original data for MIMIC-III in this repo as it violates the Data Usage Agreement. You can get access to MIMIC dataset following the instructions (Adapated from [here]((https://github.com/kaggarwal/ClinicalNotesICU#steps))):
-    - Clone https://github.com/kaggarwal/ClinicalNotesICU . 
-    - Clone https://github.com/YerevaNN/mimic3-benchmarks and run all data generation steps to generate training data without text features.
-    - Run `scripts/extract_notes.py` file and under `scripts/extract_T0.py` file from ClinicalNotesICU folder.
-    - Update all paths and configuration in config.py file.
-    - For IHM run ihm_model.py file under tf_trad. 
+
+- Clone https://github.com/kaggarwal/ClinicalNotesICU . 
+- Clone https://github.com/YerevaNN/mimic3-benchmarks and run all data generation steps to generate training data without text features.
+- Run `scripts/extract_notes.py` file and under `scripts/extract_T0.py` file from ClinicalNotesICU folder.
+- Update all paths and configuration in config.py file.
+- For IHM run ihm_model.py file under tf_trad. 
+    
     ```
     Number of train_raw_names: 14681
     Succeed Merging: 11579 - Model will train on this many episodes as it contains text.
     Missing Merging: 3102 - These texts don't have any text for first 48 hours.
     ```
-
-P12 and P19 : You can get access to raw P12/P19 data via https://physionet.org/content/challenge-2012/1.0.0/ and https://physionet.org/content/challenge-2019/1.0.0/ . Alternatively, you can use `medical_ts_datasets` from [its original github repository](https://github.com/ExpectationMax/medical_ts_datasets). 
 
 
 ## Data Preprocessing
